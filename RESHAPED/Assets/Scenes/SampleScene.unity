@@ -129,8 +129,8 @@ GameObject:
   m_Component:
   - component: {fileID: 38914489}
   - component: {fileID: 38914490}
-  m_Layer: 0
-  m_Name: Circle-0001_0
+  m_Layer: 6
+  m_Name: SpritePlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -312,7 +312,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -439,7 +439,9 @@ GameObject:
   - component: {fileID: 1130049428}
   - component: {fileID: 1130049427}
   - component: {fileID: 1130049430}
-  m_Layer: 0
+  - component: {fileID: 1130049431}
+  - component: {fileID: 1130049432}
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -495,8 +497,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDamping: 0.5
-  m_AngularDamping: 0.05
+  m_LinearDamping: 5
+  m_AngularDamping: 2
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -537,8 +539,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6486066561581d4cb8db7c71061e892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3000
-  maxSpeed: 100000
+  moveSpeed: 1300
+  maxSpeed: 4000
+--- !u!114 &1130049431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1130049426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3432391cf6654b540859f0858f7d1c99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 6209676093597419356, guid: 57f4f1fb6956210438717d183273c8ab, type: 3}
+  firePoint: {fileID: 0}
+  bulletSpeed: 20
+  fireRate: 0.5
+  damage: 10
+--- !u!114 &1130049432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1130049426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10dfe3d318fbb3c458e7ec99a738d057, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBase: 100
+  healthMult: 1
+  healthTotal: 0
+  damageBase: 10
+  damageMult: 1
+  damageTotal: 0
+  speedBase: 1300
+  speedMult: 1
+  speedTotal: 0
+  cooldownBase: 0.5
+  cooldownMult: 1
+  cooldownTotal: 0
+  health: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
