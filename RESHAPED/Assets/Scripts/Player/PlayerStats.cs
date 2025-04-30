@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    public static PlayerStats Instance; // Singleton instance of PlayerStats
+    public static PlayerStats Instance  { get { return instance; }} // Singleton instance of PlayerStats
     private static PlayerStats instance; // Static instance for easy access
 
     private void Awake()
@@ -33,6 +33,10 @@ public class PlayerStats : MonoBehaviour
     public float cooldownMult = 1f; // Cooldown multiplier for the player	
     public float cooldownTotal; // Maximum cooldown time for the player
 
+
+    public float currentXP; // Current experience points of the player
+    public float xpToLevelUp = 100; // Experience points required to level up
+    public float level; // Current level of the player
 
     [Header("Player Private Stats")]
     [Inspectable] public float health; // Current health of the player
@@ -78,5 +82,21 @@ public class PlayerStats : MonoBehaviour
                 Debug.LogWarning("Invalid stat name: " + stat); // Log a warning for invalid stat name
                 break;
         }
+    }
+
+    public void CheckLevelUp()
+    {
+        if (currentXP >= xpToLevelUp) // Check if the current experience points are greater than or equal to the required experience points to level up
+        {
+            LevelUp(); // Call the method to level up the player
+        }
+    }
+
+    public void LevelUp()
+    {
+        level++; // Increase the player's level by 1
+        currentXP -= xpToLevelUp; // Deduct the required experience points for leveling up from the current experience points
+        xpToLevelUp = Mathf.RoundToInt(xpToLevelUp * 1.5f); // Increase the required experience points for the next level up
+        Debug.Log("Level Up! Current Level: " + level); // Log the new level to the console
     }
 }

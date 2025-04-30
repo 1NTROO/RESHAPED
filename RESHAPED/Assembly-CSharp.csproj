@@ -65,10 +65,14 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.29f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Shoot.cs" />
-    <Compile Include="Assets\Scripts\PlayerStats.cs" />
-    <Compile Include="Assets\Scripts\BulletHandler.cs" />
-    <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\Shooting\BulletHandler.cs" />
+    <Compile Include="Assets\Scripts\Camera\CameraFollowPlayer.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemySpawn\EnemySpawner.cs" />
+    <Compile Include="Assets\Scripts\Shooting\Shoot.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemyMovement.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemyStats.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerStats.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

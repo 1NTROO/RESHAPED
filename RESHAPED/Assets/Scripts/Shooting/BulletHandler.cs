@@ -20,16 +20,16 @@ public class BulletHandler : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        if (other.CompareTag("Enemy")) // Check if the bullet collides with an object tagged as "Enemy"
+        if (collision.collider.CompareTag("Enemy")) // Check if the bullet collides with an object tagged as "Enemy"
         {
-            // // GameObject enemy = other.GetComponent<EnemyStats>(); // Get the Enemy component from the collided object
-            // if (enemy != null)
-            // {
-            //     enemy.TakeDamage(damage); // Call the TakeDamage method on the enemy to apply damage
-            // }
-            // Destroy(gameObject); // Destroy the bullet game object after hitting the enemy
+            GameObject enemy = collision.collider.gameObject; // Get the Enemy component from the collided object
+            if (enemy != null)
+            {
+                enemy.GetComponent<EnemyStats>().TakeDamage(damage); // Call the TakeDamage method on the enemy to apply damage
+            }
+            Destroy(gameObject); // Destroy the bullet game object after hitting the enemy
         }
     }
 }
