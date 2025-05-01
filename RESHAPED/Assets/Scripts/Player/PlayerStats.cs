@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -20,23 +21,35 @@ public class PlayerStats : MonoBehaviour
     }
 
     [Header("Player Public Stats")]
+
+    [Header("Player Health Stats")]
     public float healthBase = 100f; // Base health of the player
     public float healthMult = 1f; // Health multiplier for the player
     public float healthTotal; // Maximum health of the player
+
+    [Header("Player Damage Stats")]
     public float damageBase = 10f; // Base damage dealt by the player
     public float damageMult = 1f; // Damage multiplier for the player
     public float damageTotal; // Maximum damage dealt by the player
+
+    [Header("Player Speed Stats")]
     public float speedBase = 1300f; // Base speed of the player
     public float speedMult = 1f; // Speed multiplier for the player
     public float speedTotal; // Maximum speed of the player
+
+    [Header("Player Cooldown Stats")]
     public float cooldownBase = 0.5f; // Base cooldown time for the player
     public float cooldownMult = 1f; // Cooldown multiplier for the player	
     public float cooldownTotal; // Maximum cooldown time for the player
 
-
+    [Header("Player Experience Stats")]
     public float currentXP; // Current experience points of the player
     public float xpToLevelUp = 100; // Experience points required to level up
     public float level; // Current level of the player
+
+    [Header("UI Assignables")]
+    [SerializeField] private GameObject xpSlider; // Reference to the XP slider UI element
+    [SerializeField] private GameObject levelText; // Reference to the level text UI element
 
     [Header("Player Private Stats")]
     [Inspectable] public float health; // Current health of the player
@@ -54,7 +67,7 @@ public class PlayerStats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        xpSlider.GetComponent<Slider>().value = currentXP / xpToLevelUp; // Update the XP slider value based on current XP and required XP to level up
     }
 
     public void IncreaseStatMult(string stat, float amount)
@@ -97,6 +110,8 @@ public class PlayerStats : MonoBehaviour
         level++; // Increase the player's level by 1
         currentXP -= xpToLevelUp; // Deduct the required experience points for leveling up from the current experience points
         xpToLevelUp = Mathf.RoundToInt(xpToLevelUp * 1.5f); // Increase the required experience points for the next level up
-        Debug.Log("Level Up! Current Level: " + level); // Log the new level to the console
+        SkillTreeManager.Instance.AddSkillPoint(); // Add a skill point to the player
+
+        levelText.GetComponent<TMPro.TextMeshProUGUI>().text = "Level: " + level; // Update the level text UI element with the new level
     }
 }

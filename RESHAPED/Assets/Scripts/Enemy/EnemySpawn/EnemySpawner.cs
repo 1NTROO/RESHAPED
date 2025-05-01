@@ -75,25 +75,25 @@ public class EnemySpawner : MonoBehaviour
         switch (side)
         {
             case 0: // top
-                screenPosition = new Vector3(screenSize.x + Random.Range(-paddingWidth, Screen.width + paddingWidth), screenSize.y + Screen.height + paddingHeight);
+                screenPosition = new Vector3(Random.Range(-paddingWidth, Screen.width + paddingWidth), Screen.height + paddingHeight);
                 break;
 
             case 1: // right
-                screenPosition = new Vector3(screenSize.x + Screen.width + paddingWidth, screenSize.y + Random.Range(-paddingHeight, Screen.height + paddingHeight));
+                screenPosition = new Vector3(Screen.width + paddingWidth, Random.Range(-paddingHeight, Screen.height + paddingHeight));
                 break;
 
             case 2: // bottom
-                screenPosition = new Vector3(screenSize.x + Random.Range(-paddingWidth, Screen.width + paddingWidth), screenSize.y -paddingHeight);
+                screenPosition = new Vector3(Random.Range(-paddingWidth, Screen.width + paddingWidth), -paddingHeight);
                 break;
 
             case 3: // left
-                screenPosition = new Vector3(screenSize.x -paddingWidth, screenSize.y + Random.Range(-paddingHeight, Screen.height + paddingHeight));
+                screenPosition = new Vector3(-paddingWidth, Random.Range(-paddingHeight, Screen.height + paddingHeight));
                 break;
         }
 
         // convert from view port space to world space
         Vector3 spawnPosition = Camera.main.ScreenToWorldPoint(screenPosition);
-        spawnPosition.y = 0;
+        spawnPosition.z = 0;
         return spawnPosition;
     }
 }

@@ -30,8 +30,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.36, y: -3.77, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2558115006773028245}
   m_Father: {fileID: 0}
@@ -98,7 +98,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &4828350127068492295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,7 +113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2.5
   target: {fileID: 0}
-  detectionRange: 10
+  detectionRange: 20
 --- !u!114 &8116016352542510624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,6 +132,9 @@ MonoBehaviour:
   damageBase: 10
   damageMult: 1
   damageTotal: 0
+  xpBase: 100
+  xpMult: 1
+  xpTotal: 0
 --- !u!1 &772181571725753687
 GameObject:
   m_ObjectHideFlags: 0
