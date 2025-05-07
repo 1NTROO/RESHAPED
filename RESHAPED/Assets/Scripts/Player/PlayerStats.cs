@@ -75,21 +75,24 @@ public class PlayerStats : MonoBehaviour
         amount /= 100;
         switch (stat)
         {
-            case "health":
+            case "HP":
                 healthMult += amount; // Increase health by the specified amount
                 healthTotal = healthBase * healthMult; // Update the base health with the multiplier
                 break;
-            case "damage":
+            case "DMG":
                 damageMult += amount; // Increase damage by the specified amount
                 damageTotal = damageBase * damageMult; // Update the base damage with the multiplier
                 break;
-            case "speed":
+            case "MS":
                 speedMult += amount; // Increase speed by the specified amount
                 speedTotal = speedBase * speedMult; // Update the base speed with the multiplier
                 break;
-            case "cooldown":
+            case "CD":
                 cooldownMult -= amount; // Increase cooldown by the specified amount
                 cooldownTotal = cooldownBase * cooldownMult; // Update the base cooldown with the multiplier
+                break;
+            case "notable":
+                // Handle notable effects here if needed
                 break;
             default:
                 Debug.LogWarning("Invalid stat name: " + stat); // Log a warning for invalid stat name

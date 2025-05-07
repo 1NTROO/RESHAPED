@@ -6,8 +6,7 @@ public class SkillTreeNode : MonoBehaviour
     public string nodeName; // Name of the skill tree node
     public bool isUnlocked; // Indicates if the node is unlocked
 
-    private bool canBeUnlocked; // Indicates if the node can be unlocked
-
+    [SerializeField] private bool canBeUnlocked; // Indicates if the node can be unlocked
 
     [SerializeField] private string[] effects;
     public string[] Effects // Property to get the effect of the node
@@ -31,21 +30,21 @@ public class SkillTreeNode : MonoBehaviour
         set { this.notable = value; }
     }
 
-
-
-    [Header("Node Requirements")]
-    [SerializeField] private SkillTreeNode[] previous; // Indicates if the previous node is unlocked
-
     [Header("Node Connections")]
     [SerializeField] private SkillTreeNode[] connectedNodes; // Array of connected nodes
+
+    private SpriteRenderer spriteRenderer; // Reference to the SpriteRenderer component
 
 
     void Start()
     {
         // Initialize the node properties
         nodeName = gameObject.name; // Set the node name to the name of the GameObject
-        canBeUnlocked = false;
+        // canBeUnlocked = false;
         isUnlocked = false; // Initialize the node as locked
+
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>(); // Get the SpriteRenderer component attached to the node
+        spriteRenderer.enabled = false; // Hide the sprite renderer initially
     }
 
     void Update()
@@ -62,14 +61,13 @@ public class SkillTreeNode : MonoBehaviour
 
     void CheckPrevious()
     {
-        if (previous.Length == 0) // Check if there are no previous nodes
+        if (isUnlocked) // Check if the node is already unlocked
         {
-            canBeUnlocked = true; // If so, set this node to unlocked
-            return;
+            return; // If so, exit the method
         }
-        for (int i = 0; i < previous.Length; i++)
+        for (int i = 0; i < connectedNodes.Length; i++)
         {
-            if (previous[i].isUnlocked == true) // Check if a previous node is unlocked
+            if (connectedNodes[i].isUnlocked) // Check if a previous node is unlocked
             {
                 canBeUnlocked = true; // If so, set this node to be able to be unlocked
                 return;
@@ -79,11 +77,13 @@ public class SkillTreeNode : MonoBehaviour
 
     void TryUnlockNode()
     {
-        if (canBeUnlocked) // Check if the node can be unlocked
+        if (canBeUnlocked && SkillTreeManager.Instance.SkillPoints > 0) // Check if the node can be unlocked
         {
             isUnlocked = true; // Unlock the node
             SkillTreeManager.Instance.SkillPoints--; // Decrease skill points
             print("Node Unlocked: " + nodeName); // Debug message to indicate the node is unlocked
+            spriteRenderer.enabled = true; // Show the sprite renderer
+            spriteRenderer.transform.position = transform.position; // Set the position of the sprite renderer to the node's position
             UnlockNode(); // Call the method to unlock the node
         }
         else
@@ -94,6 +94,17 @@ public class SkillTreeNode : MonoBehaviour
 
     void UnlockNode()
     {
+        // Apply the effects of the node to the player stats
+        for (int i = 0; i < effects.Length; i++)
+        {
+            PlayerStats.Instance.IncreaseStatMult(effects[i], values[i]); // Call the method to increase the player stats
+        }
+
+        if (isNotable) // Check if the node is a notable node
+        {
+            PlayerStats.Instance.IncreaseStatMult(notable, 0); // Call the method to increase the player stats with notable effect
+        }
+
 
     }
 }
