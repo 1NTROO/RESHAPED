@@ -27,6 +27,8 @@ public class SkillTreeManager : MonoBehaviour
 
     [SerializeField] private GameObject skillTreeCanvas; // Reference to the skill tree canvas
 
+    [SerializeField] private GameObject skillTreeNodes; // Reference to the skill tree nodes
+
     void Start()
     {
         
@@ -39,9 +41,19 @@ public class SkillTreeManager : MonoBehaviour
 
     public void GoToSkillTree()
     {
-        Time.timeScale = 0; // Pause the game
-        print("Game Paused"); // Debug message to indicate the game is paused
-        skillTreeCanvas.SetActive(true); // Show the skill tree canvas
+
+        if (skillTreeCanvas.activeSelf) // Check if the skill tree canvas is already active
+        {
+            ExitSkillTree(); // If it is, exit the skill tree
+        }
+        else
+        {
+            Time.timeScale = 0; // Pause the game
+            print("Game Paused"); // Debug message to indicate the game is paused
+            skillTreeCanvas.SetActive(true); // Show the skill tree canvas
+            skillTreeNodes.SetActive(true); // Show the skill tree nodes
+            // skillTreeNodes.transform.position = skillTreeCanvas.transform.position; // Reset the position of the skill tree nodes
+        }   
     }
 
     public void ExitSkillTree()
@@ -49,6 +61,7 @@ public class SkillTreeManager : MonoBehaviour
         Time.timeScale = 1; // Resume the game
         print("Game Resumed"); // Debug message to indicate the game is resumed
         skillTreeCanvas.SetActive(false); // Hide the skill tree canvas
+        skillTreeNodes.SetActive(false); // Hide the skill tree nodes
     }
 
     public void AddSkillPoint()
