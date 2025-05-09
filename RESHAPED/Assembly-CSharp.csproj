@@ -59,7 +59,7 @@
     <UnityVersion>6000.0.29f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Users\intro\.vscode\extensions\visualstudiotoolsforunity.vstuc-1.1.1\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="C:\Users\intro\.vscode\extensions\visualstudiotoolsforunity.vstuc-1.1.2\Analyzers\Microsoft.Unity.Analyzers.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.29f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.29f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.29f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
@@ -69,6 +69,7 @@
     <Compile Include="Assets\Scripts\Shooting\BulletHandler.cs" />
     <Compile Include="Assets\Scripts\Managers\SkillTreeManager.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraFollowPlayer.cs" />
+    <Compile Include="Assets\Scripts\SkillTree\NotableNode.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemySpawn\EnemySpawner.cs" />
     <Compile Include="Assets\Scripts\Shooting\Shoot.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />

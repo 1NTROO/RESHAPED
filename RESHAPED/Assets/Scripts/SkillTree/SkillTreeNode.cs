@@ -32,6 +32,7 @@ public class SkillTreeNode : MonoBehaviour
 
     [Header("Node Connections")]
     [SerializeField] private SkillTreeNode[] connectedNodes; // Array of connected nodes
+    [SerializeField] private NotableNode notableNode; // Reference to the notable node
 
     private SpriteRenderer spriteRenderer; // Reference to the SpriteRenderer component
 
@@ -102,7 +103,8 @@ public class SkillTreeNode : MonoBehaviour
 
         if (isNotable) // Check if the node is a notable node
         {
-            PlayerStats.Instance.IncreaseStatMult(notable, 0); // Call the method to increase the player stats with notable effect
+            notableNode = GetComponent<NotableNode>(); // Get the NotableNode component attached to the node
+            PlayerStats.Instance.IncreaseStatMult(notable, 0, notableNode); // Call the method to increase the player stats with notable effect
         }
 
 

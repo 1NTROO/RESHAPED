@@ -1,3 +1,4 @@
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,6 +22,7 @@ public class PlayerStats : MonoBehaviour
     }
 
     [Header("Player Public Stats")]
+    public NotableNode.NotableType[] notableTypes; // Types of the notable nodes
 
     [Header("Player Health Stats")]
     public float healthBase = 100f; // Base health of the player
@@ -36,6 +38,7 @@ public class PlayerStats : MonoBehaviour
     public float speedBase = 1300f; // Base speed of the player
     public float speedMult = 1f; // Speed multiplier for the player
     public float speedTotal; // Maximum speed of the player
+    public float speedTotalMult; // Maximum speed multiplier for the player
 
     [Header("Player Cooldown Stats")]
     public float cooldownBase = 0.5f; // Base cooldown time for the player
@@ -53,6 +56,7 @@ public class PlayerStats : MonoBehaviour
 
     [Header("Player Private Stats")]
     [Inspectable] public float health; // Current health of the player
+    private bool hasSpeedBuff = false; // Flag to check if the player has a speed buff
 
     void Start()
     {
@@ -68,9 +72,11 @@ public class PlayerStats : MonoBehaviour
     void Update()
     {
         xpSlider.GetComponent<Slider>().value = currentXP / xpToLevelUp; // Update the XP slider value based on current XP and required XP to level up
+
+        GetNotable(); // Call the method to check for notable effects
     }
 
-    public void IncreaseStatMult(string stat, float amount)
+    public void IncreaseStatMult(string stat, float amount, NotableNode notable = null)
     {
         amount /= 100;
         switch (stat)
@@ -81,10 +87,18 @@ public class PlayerStats : MonoBehaviour
                 break;
             case "DMG":
                 damageMult += amount; // Increase damage by the specified amount
+                if (notableTypes.Contains(NotableNode.NotableType.SpeedDamage)) // Check if the player has a SpeedDamage Notable
+                {
+                    speedMult += amount / 4; // Increase damage by the specified amount
+                }
                 damageTotal = damageBase * damageMult; // Update the base damage with the multiplier
                 break;
             case "MS":
                 speedMult += amount; // Increase speed by the specified amount
+                if (notableTypes.Contains(NotableNode.NotableType.SpeedDamage)) // Check if the player has a SpeedDamage Notable
+                {
+                    damageMult += amount / 2; // Increase damage by the specified amount
+                }
                 speedTotal = speedBase * speedMult; // Update the base speed with the multiplier
                 break;
             case "CD":
@@ -92,7 +106,7 @@ public class PlayerStats : MonoBehaviour
                 cooldownTotal = cooldownBase * cooldownMult; // Update the base cooldown with the multiplier
                 break;
             case "notable":
-                // Handle notable effects here if needed
+                notable.AddNotableSkill(); // Call the method to add a notable skill
                 break;
             default:
                 Debug.LogWarning("Invalid stat name: " + stat); // Log a warning for invalid stat name
@@ -116,5 +130,32 @@ public class PlayerStats : MonoBehaviour
         SkillTreeManager.Instance.AddSkillPoint(); // Add a skill point to the player
 
         levelText.GetComponent<TMPro.TextMeshProUGUI>().text = "Level: " + level; // Update the level text UI element with the new level
+    }
+
+    public void GetNotable()
+    {
+        foreach (NotableNode.NotableType notable in notableTypes) // Iterate through the notable types
+        {
+            if (notable == NotableNode.NotableType.CooldownDamage)
+            {
+
+            }
+            else if (notable == NotableNode.NotableType.SpeedHealth)
+            {
+                if (health > healthTotal / 2 && !hasSpeedBuff) // Check if the player's health is above half of the total health
+                {
+                    hasSpeedBuff = true; // Set the flag to true
+                    speedTotal *= speedTotalMult; // Increase speed by 20%
+                }
+                else if (health < healthTotal / 2 && hasSpeedBuff) // Check if the player's health is below half of the total health
+                {
+                    hasSpeedBuff = false; // Set the flag to false
+                }
+            }
+            else if (notable == NotableNode.NotableType.CooldownHealth)
+            {
+
+            }
+        }
     }
 }
