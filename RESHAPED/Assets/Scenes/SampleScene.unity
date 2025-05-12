@@ -162,6 +162,7 @@ MonoBehaviour:
   - {fileID: 2008692797}
   - {fileID: 1922716324}
   - {fileID: 539573540}
+  notableNode: {fileID: 0}
 --- !u!58 &8812764
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -359,6 +360,7 @@ MonoBehaviour:
   connectedNodes:
   - {fileID: 1777067634}
   - {fileID: 0}
+  notableNode: {fileID: 0}
 --- !u!58 &81068065
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1061,6 +1063,7 @@ MonoBehaviour:
   connectedNodes:
   - {fileID: 539573540}
   - {fileID: 1724031206}
+  notableNode: {fileID: 0}
 --- !u!58 &259143592
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1139,6 +1142,7 @@ MonoBehaviour:
   - {fileID: 834679613}
   - {fileID: 1549140362}
   - {fileID: 1779869033}
+  notableNode: {fileID: 0}
 --- !u!58 &283527629
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1335,6 +1339,7 @@ MonoBehaviour:
   connectedNodes:
   - {fileID: 1291701766}
   - {fileID: 1628955120}
+  notableNode: {fileID: 0}
 --- !u!58 &292744305
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1465,6 +1470,7 @@ MonoBehaviour:
   - {fileID: 1101231444}
   - {fileID: 834679613}
   - {fileID: 562918362}
+  notableNode: {fileID: 0}
 --- !u!1 &405607031
 GameObject:
   m_ObjectHideFlags: 0
@@ -2039,6 +2045,7 @@ MonoBehaviour:
   - {fileID: 562918362}
   - {fileID: 813816547}
   - {fileID: 1496143469}
+  notableNode: {fileID: 0}
 --- !u!1 &539573539
 GameObject:
   m_ObjectHideFlags: 0
@@ -2081,6 +2088,7 @@ MonoBehaviour:
   - {fileID: 8812763}
   - {fileID: 771264402}
   - {fileID: 259143591}
+  notableNode: {fileID: 0}
 --- !u!58 &539573541
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2228,6 +2236,7 @@ MonoBehaviour:
   - {fileID: 853699019}
   - {fileID: 855980574}
   - {fileID: 526773252}
+  notableNode: {fileID: 0}
 --- !u!1 &591905979
 GameObject:
   m_ObjectHideFlags: 0
@@ -2269,6 +2278,7 @@ MonoBehaviour:
   connectedNodes:
   - {fileID: 1367521939}
   - {fileID: 853699019}
+  notableNode: {fileID: 0}
 --- !u!58 &591905981
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2834,6 +2844,7 @@ MonoBehaviour:
   connectedNodes:
   - {fileID: 1291701766}
   - {fileID: 1724031206}
+  notableNode: {fileID: 0}
 --- !u!58 &743763806
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3014,6 +3025,7 @@ MonoBehaviour:
   connectedNodes:
   - {fileID: 539573540}
   - {fileID: 1829168604}
+  notableNode: {fileID: 0}
 --- !u!58 &771264403
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3420,6 +3432,7 @@ MonoBehaviour:
   connectedNodes:
   - {fileID: 526773252}
   - {fileID: 1628955120}
+  notableNode: {fileID: 0}
 --- !u!1 &834679610
 GameObject:
   m_ObjectHideFlags: 0
@@ -3514,6 +3527,7 @@ MonoBehaviour:
   connectedNodes:
   - {fileID: 283527628}
   - {fileID: 297607272}
+  notableNode: {fileID: 0}
 --- !u!1 &839598229
 GameObject:
   m_ObjectHideFlags: 0
@@ -3645,6 +3659,7 @@ MonoBehaviour:
   connectedNodes:
   - {fileID: 562918362}
   - {fileID: 591905980}
+  notableNode: {fileID: 0}
 --- !u!1 &854885725
 GameObject:
   m_ObjectHideFlags: 0
@@ -3825,6 +3840,7 @@ MonoBehaviour:
   connectedNodes:
   - {fileID: 562918362}
   - {fileID: 2074550251}
+  notableNode: {fileID: 0}
 --- !u!1 &907344739
 GameObject:
   m_ObjectHideFlags: 0
@@ -4216,6 +4232,7 @@ MonoBehaviour:
   connectedNodes:
   - {fileID: 1281960334}
   - {fileID: 1947746429}
+  notableNode: {fileID: 0}
 --- !u!58 &1005075549
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -4449,6 +4466,7 @@ MonoBehaviour:
   connectedNodes:
   - {fileID: 297607272}
   - {fileID: 1512538246}
+  notableNode: {fileID: 0}
 --- !u!1 &1106486646
 GameObject:
   m_ObjectHideFlags: 0
@@ -4627,6 +4645,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10dfe3d318fbb3c458e7ec99a738d057, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  notableTypes: 
   healthBase: 100
   healthMult: 1
   healthTotal: 0
@@ -4636,6 +4655,7 @@ MonoBehaviour:
   speedBase: 1300
   speedMult: 1
   speedTotal: 0
+  speedTotalMult: 0
   cooldownBase: 0.5
   cooldownMult: 1
   cooldownTotal: 0
@@ -4982,6 +5002,7 @@ MonoBehaviour:
   - {fileID: 1779869033}
   - {fileID: 1005075548}
   - {fileID: 1899184936}
+  notableNode: {fileID: 0}
 --- !u!58 &1281960335
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -5076,6 +5097,7 @@ MonoBehaviour:
   - {fileID: 1367521939}
   - {fileID: 743763805}
   - {fileID: 292744304}
+  notableNode: {fileID: 0}
 --- !u!58 &1291701767
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -5258,6 +5280,7 @@ MonoBehaviour:
   - {fileID: 1555039970}
   - {fileID: 591905980}
   - {fileID: 1291701766}
+  notableNode: {fileID: 0}
 --- !u!58 &1367521940
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -5691,6 +5714,7 @@ MonoBehaviour:
   connectedNodes:
   - {fileID: 1779869033}
   - {fileID: 2008692797}
+  notableNode: {fileID: 0}
 --- !u!58 &1465790705
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -5923,6 +5947,7 @@ MonoBehaviour:
   connectedNodes:
   - {fileID: 526773252}
   - {fileID: 1947746429}
+  notableNode: {fileID: 0}
 --- !u!1 &1509308237
 GameObject:
   m_ObjectHideFlags: 0
@@ -6101,6 +6126,7 @@ MonoBehaviour:
   - {fileID: 81068064}
   - {fileID: 1101231444}
   - {fileID: 1367521939}
+  notableNode: {fileID: 0}
 --- !u!58 &1512538247
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -6298,6 +6324,7 @@ MonoBehaviour:
   connectedNodes:
   - {fileID: 283527628}
   - {fileID: 1777067634}
+  notableNode: {fileID: 0}
 --- !u!58 &1549140363
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -6375,6 +6402,7 @@ MonoBehaviour:
   connectedNodes:
   - {fileID: 1367521939}
   - {fileID: 1922716324}
+  notableNode: {fileID: 0}
 --- !u!58 &1555039971
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -6769,6 +6797,7 @@ MonoBehaviour:
   connectedNodes:
   - {fileID: 292744304}
   - {fileID: 813816547}
+  notableNode: {fileID: 0}
 --- !u!1 &1724031204
 GameObject:
   m_ObjectHideFlags: 0
@@ -6826,6 +6855,7 @@ MonoBehaviour:
   connectedNodes:
   - {fileID: 743763805}
   - {fileID: 259143591}
+  notableNode: {fileID: 0}
 --- !u!58 &1724031207
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -7027,6 +7057,7 @@ MonoBehaviour:
   - {fileID: 1101231444}
   - {fileID: 1549140362}
   - {fileID: 8812763}
+  notableNode: {fileID: 0}
 --- !u!58 &1777067635
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -7122,6 +7153,7 @@ MonoBehaviour:
   - {fileID: 2074550251}
   - {fileID: 1465790704}
   - {fileID: 1281960334}
+  notableNode: {fileID: 0}
 --- !u!58 &1779869034
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -7451,6 +7483,7 @@ MonoBehaviour:
   connectedNodes:
   - {fileID: 1899184936}
   - {fileID: 771264402}
+  notableNode: {fileID: 0}
 --- !u!58 &1829168605
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -8017,6 +8050,7 @@ MonoBehaviour:
   connectedNodes:
   - {fileID: 1281960334}
   - {fileID: 1829168604}
+  notableNode: {fileID: 0}
 --- !u!58 &1899184937
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -8094,6 +8128,7 @@ MonoBehaviour:
   connectedNodes:
   - {fileID: 8812763}
   - {fileID: 1555039970}
+  notableNode: {fileID: 0}
 --- !u!58 &1922716325
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -8238,6 +8273,7 @@ MonoBehaviour:
   connectedNodes:
   - {fileID: 1496143469}
   - {fileID: 1005075548}
+  notableNode: {fileID: 0}
 --- !u!1 &1971727832
 GameObject:
   m_ObjectHideFlags: 0
@@ -8366,6 +8402,7 @@ MonoBehaviour:
   connectedNodes:
   - {fileID: 8812763}
   - {fileID: 2074550251}
+  notableNode: {fileID: 0}
 --- !u!58 &2008692798
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -8497,6 +8534,7 @@ MonoBehaviour:
   connectedNodes:
   - {fileID: 1779869033}
   - {fileID: 855980574}
+  notableNode: {fileID: 0}
 --- !u!58 &2074550252
 CircleCollider2D:
   m_ObjectHideFlags: 0
