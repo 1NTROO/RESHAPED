@@ -115,6 +115,7 @@ MonoBehaviour:
   speed: 2.5
   target: {fileID: 0}
   detectionRange: 20
+  readyToAttack: 0
 --- !u!114 &8116016352542510624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,7 +135,7 @@ MonoBehaviour:
   damageBase: 10
   damageMult: 1
   damageTotal: 0
-  xpBase: 100
+  xpBase: 35
   xpMult: 1
   xpTotal: 0
 --- !u!114 &7990596560112056947

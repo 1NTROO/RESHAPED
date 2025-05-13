@@ -49,7 +49,7 @@ public class PlayerStats : MonoBehaviour
 
     [Header("Player Experience Stats")]
     public float currentXP; // Current experience points of the player
-    public float xpToLevelUp = 100; // Experience points required to level up
+    public float xpToLevelUp; // Experience points required to level up
     public float level; // Current level of the player
 
     [Header("UI Assignables")]
@@ -134,7 +134,7 @@ public class PlayerStats : MonoBehaviour
     {
         level++; // Increase the player's level by 1
         currentXP -= xpToLevelUp; // Deduct the required experience points for leveling up from the current experience points
-        xpToLevelUp = Mathf.RoundToInt(xpToLevelUp * 1.5f); // Increase the required experience points for the next level up
+        xpToLevelUp += 66; // Increase the required experience points for the next level up
         SkillTreeManager.Instance.AddSkillPoint(); // Add a skill point to the player
 
         levelText.GetComponent<TMPro.TextMeshProUGUI>().text = "Level: " + level; // Update the level text UI element with the new level

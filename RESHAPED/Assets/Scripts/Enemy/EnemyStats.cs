@@ -30,9 +30,9 @@ public class EnemyStats : MonoBehaviour
 
     void Start()
     {
-        healthTotal = healthBase; // Initialize the total health with the base health
-        damageTotal = damageBase; // Initialize the total damage with the base damage
-        xpTotal = xpBase; // Initialize the total experience points with the base experience points
+        healthTotal = healthBase * healthMult; // Calculate the total health based on base and multiplier
+        damageTotal = damageBase * damageMult; // Calculate the total damage based on base and multiplier
+        xpTotal = xpBase * xpMult; // Calculate the total experience points based on base and multiplier
 
         spriteRenderer = GetComponentInChildren<SpriteRenderer>(); // Get the SpriteRenderer component from the child object
     }
@@ -40,6 +40,16 @@ public class EnemyStats : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void OnSpawn()
+    {
+        int playerLevel = (int)PlayerStats.Instance.level; // Get the player's level from PlayerStats
+
+        float levelMult = 1 + (playerLevel / 10f); // Calculate the level multiplier based on the player's level
+        healthMult = levelMult; // Set the health multiplier based on the level multiplier
+        damageMult = levelMult; // Set the damage multiplier based on the level multiplier
+        xpMult = levelMult; // Set the experience points multiplier based on the level multiplier
     }
 
     public void TakeDamage(float damage)

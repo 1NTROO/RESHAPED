@@ -41,15 +41,16 @@ public class EnemySpawner : MonoBehaviour
 
         if (spawnTimer < 0)
         {
-            SpawnAsteroidOffscreen();
+            SpawnEnemyOffscreen();
             ResetTimer();
         }
     }
 
-    private void SpawnAsteroidOffscreen()
+    private void SpawnEnemyOffscreen()
     {
         // instantiate new GO from prefab on position off screen
         GameObject enemy = Instantiate(enemyPrefab, GetRandomPositionOffScreen(), Quaternion.identity, transform);
+        enemy.GetComponent<EnemyStats>().OnSpawn();
     }
 
     private void ResetTimer()

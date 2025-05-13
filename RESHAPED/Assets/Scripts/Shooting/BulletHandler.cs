@@ -31,5 +31,13 @@ public class BulletHandler : MonoBehaviour
             }
             Destroy(gameObject); // Destroy the bullet game object after hitting the enemy
         }
+        else if (collision.collider.CompareTag("EnemyBullet"))
+        {
+            GameObject enemyBullet = collision.collider.gameObject; // Get the Enemy component from the collided object
+            if (enemyBullet != null)
+            {
+                Destroy(enemyBullet); // Call the TakeDamage method on the enemy to apply damage
+            }
+        }
     }
 }

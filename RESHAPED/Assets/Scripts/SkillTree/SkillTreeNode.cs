@@ -86,6 +86,7 @@ public class SkillTreeNode : MonoBehaviour
             spriteRenderer.enabled = true; // Show the sprite renderer
             spriteRenderer.transform.position = transform.position; // Set the position of the sprite renderer to the node's position
             UnlockNode(); // Call the method to unlock the node
+            SkillTreeManager.Instance.SkillPointTextUpdate(); // Update the skill point text UI element
         }
         else
         {

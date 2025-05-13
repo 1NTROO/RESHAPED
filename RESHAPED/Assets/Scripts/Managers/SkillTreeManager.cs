@@ -29,6 +29,8 @@ public class SkillTreeManager : MonoBehaviour
 
     [SerializeField] private GameObject skillTreeNodes; // Reference to the skill tree nodes
 
+    [SerializeField] private TMPro.TextMeshProUGUI skillPointText; // Reference to the skill point text UI element
+
     void Start()
     {
         
@@ -66,6 +68,12 @@ public class SkillTreeManager : MonoBehaviour
 
     public void AddSkillPoint()
     {
-        skillPoints++;
+        skillPoints++;  
+        SkillPointTextUpdate(); // Update the skill point text UI element
+    }
+
+    public void SkillPointTextUpdate()
+    {
+        skillPointText.text = "Skill Points: " + skillPoints; // Update the skill point text UI element
     }
 }
