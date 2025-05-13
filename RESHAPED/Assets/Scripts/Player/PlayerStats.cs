@@ -167,6 +167,22 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
+    public void TakeDamage(float damage)
+    {
+        health -= damage; // Decrease the player's health by the damage amount
+        if (health <= 0f) // Check if the player's health is less than or equal to zero
+        {
+            OnDeath(); // Call the method to handle player death
+        }
+    }
+
+    public void OnDeath()
+    {
+        // Handle player death logic here
+        Debug.Log("Player has died!"); // Log a message indicating player death
+        // You can add additional logic such as respawning or game over screen here
+    }
+
     public void OnFire()
     {
         if (notableTypes.Contains(NotableNode.NotableType.CooldownHealth)) // Check if the player has a CooldownHealth Notable

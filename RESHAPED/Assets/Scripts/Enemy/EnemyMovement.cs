@@ -9,9 +9,12 @@ public class EnemyMovement : MonoBehaviour
     public Transform target; // Target to follow (e.g., player)
     public float detectionRange = 10f; // Range within which the enemy can detect the target
 
+    private EnemyStats enemyStats; // Reference to the EnemyStats component
+
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform; // Find the player object by tag
+        enemyStats = GetComponent<EnemyStats>(); // Get the EnemyStats component attached to this GameObject
     }
 
     void Update()
@@ -19,6 +22,15 @@ public class EnemyMovement : MonoBehaviour
         if (IsTargetInRange())
         {
             FollowPlayer();
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            PlayerStats.Instance.TakeDamage(enemyStats.damageTotal); // Example damage to player
+            Destroy(gameObject); // Destroy the enemy on collision with player
         }
     }
 

@@ -4105,7 +4105,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1003178575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4285,6 +4285,17 @@ Transform:
   - {fileID: 2095688283}
   m_Father: {fileID: 672619531}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1062714598 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8116016352542510624, guid: e835c2bd3ff98464cba771ce1aeb8c77, type: 3}
+  m_PrefabInstance: {fileID: 4380794561988687004}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64027ee59af43d948b4ff7985a4beb70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1095051398
 GameObject:
   m_ObjectHideFlags: 0
@@ -8844,12 +8855,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2410076193892279483, guid: e835c2bd3ff98464cba771ce1aeb8c77, type: 3}
       propertyPath: m_SortingLayer
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2410076193892279483, guid: e835c2bd3ff98464cba771ce1aeb8c77, type: 3}
       propertyPath: m_SortingLayerID
       value: -484286247
       objectReference: {fileID: 0}
+    - target: {fileID: 4828350127068492295, guid: e835c2bd3ff98464cba771ce1aeb8c77, type: 3}
+      propertyPath: enemyStats
+      value: 
+      objectReference: {fileID: 1062714598}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
