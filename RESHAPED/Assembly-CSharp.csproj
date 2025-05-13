@@ -75,7 +75,9 @@
     <Compile Include="Assets\Scripts\Shooting\Shoot.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyBulletHandler.cs" />
+    <Compile Include="Assets\Scripts\Managers\KeepInfoOnLoad.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyMovement.cs" />
+    <Compile Include="Assets\Scripts\Managers\GameOverManager.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyStats.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerStats.cs" />
   </ItemGroup>

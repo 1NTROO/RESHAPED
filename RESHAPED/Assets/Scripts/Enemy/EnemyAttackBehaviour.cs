@@ -61,7 +61,6 @@ public class EnemyAttackBehaviour : MonoBehaviour
                 break;
         }
         nextAttackTime = 0f; // Reset the attack timer
-        print("Enemy attacked!"); // Debug message
     }
 
     void MeleeAttack()

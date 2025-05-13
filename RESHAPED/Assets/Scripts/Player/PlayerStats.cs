@@ -3,6 +3,7 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class PlayerStats : MonoBehaviour
         else
         {
             instance = this; // Set the current instance as the singleton instance
-            DontDestroyOnLoad(gameObject); // Prevent this object from being destroyed on scene load
+            // DontDestroyOnLoad(gameObject); // Prevent this object from being destroyed on scene load
         }
     }
 
@@ -51,6 +52,7 @@ public class PlayerStats : MonoBehaviour
     public float currentXP; // Current experience points of the player
     public float xpToLevelUp; // Experience points required to level up
     public float level; // Current level of the player
+    private float totalXP; // Total experience points of the player
 
     [Header("UI Assignables")]
     [SerializeField] private GameObject xpSlider; // Reference to the XP slider UI element
@@ -132,6 +134,7 @@ public class PlayerStats : MonoBehaviour
 
     public void LevelUp()
     {
+        totalXP += xpToLevelUp; // Increase the total experience points by the required experience points for leveling up
         level++; // Increase the player's level by 1
         currentXP -= xpToLevelUp; // Deduct the required experience points for leveling up from the current experience points
         xpToLevelUp += 66; // Increase the required experience points for the next level up
@@ -180,7 +183,10 @@ public class PlayerStats : MonoBehaviour
     {
         // Handle player death logic here
         Debug.Log("Player has died!"); // Log a message indicating player death
-        // You can add additional logic such as respawning or game over screen here
+        totalXP += currentXP; // Add the current experience points to the total experience points
+        KeepInfoOnLoad.Instance.KeepInfo(totalXP); // Call the method to keep player information on load
+        Destroy(gameObject); // Destroy the player game object
+        SceneManager.LoadScene("GameOverScene"); // Load the GameOver scene
     }
 
     public void OnFire()

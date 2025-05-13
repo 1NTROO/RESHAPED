@@ -15,6 +15,7 @@ public class CameraFollowPlayer : MonoBehaviour
     void Update()
     {
         // sets the transform of the camera to follow the player with a set distance.
-        transform.position = player.transform.position + new Vector3(0, 0, -cameraDistance);
+        if (player != null)
+            transform.position = player.transform.position + new Vector3(0, 0, -cameraDistance);
     }
 }
