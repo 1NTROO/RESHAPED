@@ -32,7 +32,9 @@ public class Shoot : MonoBehaviour
         firePoint = transform;
         if (Time.time >= nextFireTime) // Check if the current time is greater than or equal to the next fire time
         {
-            nextFireTime = Time.time + 1f / fireRate; // Set the next fire time based on the fire rate
+            fireRate = PlayerStats.Instance.cooldownTotal / 1000; // Get the cooldown time from the PlayerStats singleton instance
+
+            nextFireTime = Time.time + fireRate; // Set the next fire time based on the fire rate
 
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation); // Create a new bullet instance
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>(); // Get the Rigidbody2D component of the bullet
@@ -43,6 +45,8 @@ public class Shoot : MonoBehaviour
             Vector2 fireDirection = (mousePos - (Vector2)firePoint.position).normalized; // Calculate the direction from the fire point to the mouse position
 
             rb.AddForce(fireDirection * bulletSpeed, ForceMode2D.Impulse); // Apply force to the bullet in the direction of the fire point's up vector
+
+            PlayerStats.Instance.OnFire();
         }
     }
 

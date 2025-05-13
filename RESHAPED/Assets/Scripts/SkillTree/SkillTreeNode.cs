@@ -95,18 +95,21 @@ public class SkillTreeNode : MonoBehaviour
 
     void UnlockNode()
     {
-        // Apply the effects of the node to the player stats
-        for (int i = 0; i < effects.Length; i++)
-        {
-            PlayerStats.Instance.IncreaseStatMult(effects[i], values[i]); // Call the method to increase the player stats
-        }
-
         if (isNotable) // Check if the node is a notable node
         {
             notableNode = GetComponent<NotableNode>(); // Get the NotableNode component attached to the node
-            PlayerStats.Instance.IncreaseStatMult(notable, 0, notableNode); // Call the method to increase the player stats with notable effect
+            PlayerStats.Instance.IncreaseStatMult("notable", 0, notableNode); // Call the method to increase the player stats with notable effect
+            return;
         }
 
+        else 
+        {
+            // Apply the effects of the node to the player stats
+            for (int i = 0; i < effects.Length; i++)
+            {
+                PlayerStats.Instance.IncreaseStatMult(effects[i], values[i]); // Call the method to increase the player stats
+            }
+        }
 
     }
 }

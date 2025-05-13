@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -22,7 +23,7 @@ public class PlayerStats : MonoBehaviour
     }
 
     [Header("Player Public Stats")]
-    public NotableNode.NotableType[] notableTypes; // Types of the notable nodes
+    public List<NotableNode.NotableType> notableTypes; // Types of the notable nodes
 
     [Header("Player Health Stats")]
     public float healthBase = 100f; // Base health of the player
@@ -44,6 +45,7 @@ public class PlayerStats : MonoBehaviour
     public float cooldownBase = 0.5f; // Base cooldown time for the player
     public float cooldownMult = 1f; // Cooldown multiplier for the player	
     public float cooldownTotal; // Maximum cooldown time for the player
+    public float cooldownTotalMult = 1f; // Maximum cooldown multiplier for the player
 
     [Header("Player Experience Stats")]
     public float currentXP; // Current experience points of the player
@@ -57,6 +59,7 @@ public class PlayerStats : MonoBehaviour
     [Header("Player Private Stats")]
     [Inspectable] public float health; // Current health of the player
     private bool hasSpeedBuff = false; // Flag to check if the player has a speed buff
+    private bool hasHealthCooldownBuff = false; // Flag to check if the player has a health cooldown buff
 
     void Start()
     {
@@ -74,6 +77,11 @@ public class PlayerStats : MonoBehaviour
         xpSlider.GetComponent<Slider>().value = currentXP / xpToLevelUp; // Update the XP slider value based on current XP and required XP to level up
 
         GetNotable(); // Call the method to check for notable effects
+
+        if (Input.GetKeyDown(KeyCode.E)) // Check if the Escape key is pressed
+        {
+            QuickLevelUp(); // Call the method to quickly level up the player
+        }
     }
 
     public void IncreaseStatMult(string stat, float amount, NotableNode notable = null)
@@ -154,8 +162,31 @@ public class PlayerStats : MonoBehaviour
             }
             else if (notable == NotableNode.NotableType.CooldownHealth)
             {
-
+                continue;
             }
         }
+    }
+
+    public void OnFire()
+    {
+        if (notableTypes.Contains(NotableNode.NotableType.CooldownHealth)) // Check if the player has a CooldownHealth Notable
+        {
+            health += healthTotal / 50; // Increase health by 2% of the maximum health
+        }
+    }
+
+    public void OnKill()
+    {
+        if (notableTypes.Contains(NotableNode.NotableType.CooldownDamage)) // Check if the player has a CooldownDamage Notable
+        {
+            cooldownTotalMult += 0.005f;
+            cooldownTotal = cooldownBase * cooldownMult * (1 / (1 + cooldownTotalMult)); // Increase cooldown by 0.5%
+        }
+    }
+
+    void QuickLevelUp()
+    {
+        currentXP = xpToLevelUp; // Set the current experience points to the required experience points for leveling up
+        LevelUp(); // Call the method to level up the player
     }
 }

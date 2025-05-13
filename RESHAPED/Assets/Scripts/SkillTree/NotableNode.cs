@@ -21,7 +21,7 @@ public class NotableNode : MonoBehaviour
 
     void Start()
     {
-        
+        thisNode = GetComponent<SkillTreeNode>(); // Get the SkillTreeNode component attached to this GameObject
     }
 
     void Update()
@@ -34,8 +34,9 @@ public class NotableNode : MonoBehaviour
         switch (thisNotableType) // Check the type of the notable node
         {
             case NotableType.SpeedDamage:
-                PlayerStats.Instance.IncreaseStatMult("MS", (PlayerStats.Instance.damageMult - 1) / 4); // Increase movement speed by 25% of damage multiplier
-                PlayerStats.Instance.IncreaseStatMult("DMG", (PlayerStats.Instance.speedMult - 1) / 2); // Increase damage by 50% of speed multiplier
+                var tempSpeedMult = PlayerStats.Instance.speedMult; // Get the current damage multiplier
+                PlayerStats.Instance.IncreaseStatMult("MS", 100 * ((PlayerStats.Instance.damageMult - 1) / 4)); // Increase movement speed by 25% of damage multiplier
+                PlayerStats.Instance.IncreaseStatMult("DMG", 100 * ((tempSpeedMult - 1) / 2)); // Increase damage by 50% of speed multiplier
                 break;
             case NotableType.CooldownDamage:
                 break;
@@ -48,6 +49,6 @@ public class NotableNode : MonoBehaviour
                 Debug.LogWarning("Invalid notable type: " + thisNotableType); // Log a warning for invalid notable type
                 break;
         }
-        PlayerStats.Instance.notableTypes.Append(thisNotableType); // Add the notable type to the player's stats
+        PlayerStats.Instance.notableTypes.Add(thisNotableType); // Add the notable type to the player's stats
     }
 }

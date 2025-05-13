@@ -4655,10 +4655,11 @@ MonoBehaviour:
   speedBase: 1300
   speedMult: 1
   speedTotal: 0
-  speedTotalMult: 0
-  cooldownBase: 0.5
+  speedTotalMult: 1.2
+  cooldownBase: 2250
   cooldownMult: 1
   cooldownTotal: 0
+  cooldownTotalMult: 0
   currentXP: 0
   xpToLevelUp: 100
   level: 0
@@ -6715,6 +6716,7 @@ GameObject:
   - component: {fileID: 1628955119}
   - component: {fileID: 1628955118}
   - component: {fileID: 1628955120}
+  - component: {fileID: 1628955121}
   m_Layer: 27
   m_Name: MS-DMGNotable
   m_TagString: Untagged
@@ -6797,7 +6799,22 @@ MonoBehaviour:
   connectedNodes:
   - {fileID: 292744304}
   - {fileID: 813816547}
-  notableNode: {fileID: 0}
+  notableNode: {fileID: 1628955121}
+--- !u!114 &1628955121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1628955117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3be1f568a8c768644a4d2aa962dcb810, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodeName: 
+  thisNode: {fileID: 0}
+  thisNotableType: 0
 --- !u!1 &1724031204
 GameObject:
   m_ObjectHideFlags: 0
@@ -6809,6 +6826,7 @@ GameObject:
   - component: {fileID: 1724031205}
   - component: {fileID: 1724031207}
   - component: {fileID: 1724031206}
+  - component: {fileID: 1724031208}
   m_Layer: 27
   m_Name: MS-HPNotable
   m_TagString: Untagged
@@ -6855,7 +6873,7 @@ MonoBehaviour:
   connectedNodes:
   - {fileID: 743763805}
   - {fileID: 259143591}
-  notableNode: {fileID: 0}
+  notableNode: {fileID: 1724031208}
 --- !u!58 &1724031207
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -6892,6 +6910,21 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 1.07
+--- !u!114 &1724031208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1724031204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3be1f568a8c768644a4d2aa962dcb810, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodeName: 
+  thisNode: {fileID: 0}
+  thisNotableType: 2
 --- !u!1 &1743971888
 GameObject:
   m_ObjectHideFlags: 0
@@ -7437,6 +7470,7 @@ GameObject:
   - component: {fileID: 1829168603}
   - component: {fileID: 1829168605}
   - component: {fileID: 1829168604}
+  - component: {fileID: 1829168606}
   m_Layer: 27
   m_Name: CD-HPNotable
   m_TagString: Untagged
@@ -7483,7 +7517,7 @@ MonoBehaviour:
   connectedNodes:
   - {fileID: 1899184936}
   - {fileID: 771264402}
-  notableNode: {fileID: 0}
+  notableNode: {fileID: 1829168606}
 --- !u!58 &1829168605
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -7520,6 +7554,21 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 1.07
+--- !u!114 &1829168606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1829168602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3be1f568a8c768644a4d2aa962dcb810, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodeName: 
+  thisNode: {fileID: 0}
+  thisNotableType: 3
 --- !u!1 &1833325469
 GameObject:
   m_ObjectHideFlags: 0
@@ -8192,6 +8241,7 @@ GameObject:
   - component: {fileID: 1947746427}
   - component: {fileID: 1947746428}
   - component: {fileID: 1947746429}
+  - component: {fileID: 1947746430}
   m_Layer: 27
   m_Name: CD-DMGNotable
   m_TagString: Untagged
@@ -8273,7 +8323,22 @@ MonoBehaviour:
   connectedNodes:
   - {fileID: 1496143469}
   - {fileID: 1005075548}
-  notableNode: {fileID: 0}
+  notableNode: {fileID: 1947746430}
+--- !u!114 &1947746430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1947746426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3be1f568a8c768644a4d2aa962dcb810, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodeName: 
+  thisNode: {fileID: 0}
+  thisNotableType: 1
 --- !u!1 &1971727832
 GameObject:
   m_ObjectHideFlags: 0

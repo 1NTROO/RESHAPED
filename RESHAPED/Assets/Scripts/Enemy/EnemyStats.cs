@@ -50,6 +50,7 @@ public class EnemyStats : MonoBehaviour
     {
         PlayerStats.Instance.currentXP += xpTotal; // Award experience points to the player
         PlayerStats.Instance.CheckLevelUp(); // Check if the player can level up
+        PlayerStats.Instance.OnKill(); // Call the OnKill method in PlayerStats
 
         Destroy(gameObject); // Destroy the enemy game object
     }
