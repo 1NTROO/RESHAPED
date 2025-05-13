@@ -1,7 +1,18 @@
+using System;
 using UnityEngine;
 
 public class EnemyStats : MonoBehaviour
 {
+    public enum EnemyType // Enum to define the type of enemy (e.g., melee, ranged, etc.)
+    {
+        Melee,
+        Ranged,
+        Boss
+    }
+
+    [Header("Enemy Type")]
+    public EnemyType thisEnemyType; // Type of the enemy
+
     [Header("Enemy Public Stats")]
     public float healthBase = 100f; // Base health of the enemy
     public float healthMult = 1f; // Health multiplier for the enemy

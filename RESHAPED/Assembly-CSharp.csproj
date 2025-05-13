@@ -71,8 +71,10 @@
     <Compile Include="Assets\Scripts\Camera\CameraFollowPlayer.cs" />
     <Compile Include="Assets\Scripts\SkillTree\NotableNode.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemySpawn\EnemySpawner.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemyAttackBehaviour.cs" />
     <Compile Include="Assets\Scripts\Shooting\Shoot.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemyBulletHandler.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyMovement.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyStats.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerStats.cs" />

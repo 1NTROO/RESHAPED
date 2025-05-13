@@ -8,6 +8,7 @@ public class EnemyMovement : MonoBehaviour
     [Header("Enemy Targeting")]
     public Transform target; // Target to follow (e.g., player)
     public float detectionRange = 10f; // Range within which the enemy can detect the target
+    public bool readyToAttack = false; // Flag to indicate if the enemy is ready to attack
 
     private EnemyStats enemyStats; // Reference to the EnemyStats component
 
@@ -19,27 +20,43 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
-        if (IsTargetInRange())
+        switch (enemyStats.thisEnemyType) // Check the type of enemy
         {
-            FollowPlayer();
+            case EnemyStats.EnemyType.Melee:
+                if (IsTargetInRange())
+                {
+                    FollowPlayer();
+                }
+                break;
+            case EnemyStats.EnemyType.Ranged:
+                if (IsTargetInRange())
+                {
+                    FollowPlayer(10f);
+                }
+                break;
+            case EnemyStats.EnemyType.Boss:
+                if (IsTargetInRange())
+                {
+                    FollowPlayer();
+                }
+                break;
+            default:
+                Debug.LogWarning("Invalid enemy type: " + enemyStats.thisEnemyType); // Log a warning for invalid enemy type
+                break;
         }
+    
     }
-
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            PlayerStats.Instance.TakeDamage(enemyStats.damageTotal); // Example damage to player
-            Destroy(gameObject); // Destroy the enemy on collision with player
-        }
-    }
-
-    void FollowPlayer()
+    void FollowPlayer(float targetDistance = 0)
     {
         if (target != null)
         {
             // Calculate the direction to the target
             Vector3 direction = (target.position - transform.position).normalized;
+            if (targetDistance != 0 && direction.magnitude <= targetDistance)
+            {
+                readyToAttack = true; // Set the flag to indicate that the enemy is ready to attack
+                return;
+            }
             // Move the enemy towards the target
             transform.position += direction * speed * Time.deltaTime;
         }
