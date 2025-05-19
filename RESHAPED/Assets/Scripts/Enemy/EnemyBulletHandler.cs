@@ -30,5 +30,9 @@ public class EnemyBulletHandler : MonoBehaviour
             }
             Destroy(gameObject); // Destroy the bullet game object after hitting the enemy
         }
+        if (collision.collider.CompareTag("Enemy") || collision.collider.CompareTag("EnemyBullet")) // Check if the bullet collides with an object tagged as "Enemy"
+        {
+            Destroy(gameObject); // Destroy the bullet game object after hitting the enemy
+        }
     }
 }

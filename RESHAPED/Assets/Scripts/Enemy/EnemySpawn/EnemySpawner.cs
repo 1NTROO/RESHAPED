@@ -10,7 +10,7 @@ public class EnemySpawner : MonoBehaviour
 
     // private List<GameObject> asteroids = new List<GameObject>();
 
-    public GameObject enemyPrefab;
+    public List<GameObject> enemyPrefabs = new List<GameObject>();
     public float padding = 0.1f;
 
     public float minSpawnTime = 3;
@@ -49,6 +49,8 @@ public class EnemySpawner : MonoBehaviour
     private void SpawnEnemyOffscreen()
     {
         // instantiate new GO from prefab on position off screen
+        int randomIndex = Random.Range(0, enemyPrefabs.Count);
+        GameObject enemyPrefab = enemyPrefabs[randomIndex];
         GameObject enemy = Instantiate(enemyPrefab, GetRandomPositionOffScreen(), Quaternion.identity, transform);
         enemy.GetComponent<EnemyStats>().OnSpawn();
     }

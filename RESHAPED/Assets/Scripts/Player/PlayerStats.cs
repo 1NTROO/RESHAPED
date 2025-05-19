@@ -58,6 +58,9 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private GameObject xpSlider; // Reference to the XP slider UI element
     [SerializeField] private GameObject levelText; // Reference to the level text UI element
 
+    [Header("Player Misc")]
+    [SerializeField] private SpriteRenderer spriteRenderer; // Reference to the SpriteRenderer component
+
     [Header("Player Private Stats")]
     [Inspectable] public float health; // Current health of the player
     private bool hasSpeedBuff = false; // Flag to check if the player has a speed buff
@@ -80,7 +83,7 @@ public class PlayerStats : MonoBehaviour
 
         GetNotable(); // Call the method to check for notable effects
 
-        if (Input.GetKeyDown(KeyCode.E)) // Check if the Escape key is pressed
+        if (Input.GetKeyDown(KeyCode.E)) // Check if the E key is pressed
         {
             QuickLevelUp(); // Call the method to quickly level up the player
         }
@@ -173,10 +176,16 @@ public class PlayerStats : MonoBehaviour
     public void TakeDamage(float damage)
     {
         health -= damage; // Decrease the player's health by the damage amount
+        HealthOpacity(); // Update the opacity of the player based on its health
         if (health <= 0f) // Check if the player's health is less than or equal to zero
         {
             OnDeath(); // Call the method to handle player death
         }
+    }
+
+    void HealthOpacity()
+    {
+        spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, (health / (healthBase * healthMult))); // Set the opacity of the enemy based on its health
     }
 
     public void OnDeath()

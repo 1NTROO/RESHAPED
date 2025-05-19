@@ -26,7 +26,7 @@ public class EnemyStats : MonoBehaviour
     public float xpTotal; // Total experience points awarded for defeating the enemy
 
     [Header("Enemy Misc")]
-    private SpriteRenderer spriteRenderer; // Reference to the SpriteRenderer component
+    [SerializeField] private SpriteRenderer spriteRenderer; // Reference to the SpriteRenderer component
 
     void Start()
     {
