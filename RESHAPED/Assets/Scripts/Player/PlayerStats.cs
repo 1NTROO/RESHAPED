@@ -64,8 +64,6 @@ public class PlayerStats : MonoBehaviour
     [Header("Player Private Stats")]
     [Inspectable] public float health; // Current health of the player
     private bool hasSpeedBuff = false; // Flag to check if the player has a speed buff
-    private bool hasHealthCooldownBuff = false; // Flag to check if the player has a health cooldown buff
-
     void Start()
     {
         healthTotal = healthBase; // Initialize the total health with the base health

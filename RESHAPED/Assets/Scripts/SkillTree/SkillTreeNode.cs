@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SkillTreeNode : MonoBehaviour
 {
@@ -33,8 +35,10 @@ public class SkillTreeNode : MonoBehaviour
     [Header("Node Connections")]
     [SerializeField] private SkillTreeNode[] connectedNodes; // Array of connected nodes
     [SerializeField] private NotableNode notableNode; // Reference to the notable node
+    [SerializeField] private List<Slider> links; // List of sliders for the node
 
     private SpriteRenderer spriteRenderer; // Reference to the SpriteRenderer component
+    private Color spriteColor; // Color of the sprite
 
 
     void Start()
@@ -45,12 +49,13 @@ public class SkillTreeNode : MonoBehaviour
         isUnlocked = false; // Initialize the node as locked
 
         spriteRenderer = GetComponentInChildren<SpriteRenderer>(); // Get the SpriteRenderer component attached to the node
-        spriteRenderer.enabled = false; // Hide the sprite renderer initially
+        spriteColor = spriteRenderer.color; // Get the color of the sprite renderer
+        spriteRenderer.color = new Color(0, 0, 0, 1.0f); // Set the color of the sprite renderer to black
     }
 
     void Update()
     {
-        
+
     }
 
     void OnMouseDown()
@@ -83,8 +88,9 @@ public class SkillTreeNode : MonoBehaviour
             isUnlocked = true; // Unlock the node
             SkillTreeManager.Instance.SkillPoints--; // Decrease skill points
             print("Node Unlocked: " + nodeName); // Debug message to indicate the node is unlocked
-            spriteRenderer.enabled = true; // Show the sprite renderer
+            spriteRenderer.color = spriteColor; // Set the color of the sprite renderer to its original color
             spriteRenderer.transform.position = transform.position; // Set the position of the sprite renderer to the node's position
+            UpdateNodeLinks(); // Update the links of the node
             UnlockNode(); // Call the method to unlock the node
             SkillTreeManager.Instance.SkillPointTextUpdate(); // Update the skill point text UI element
         }
@@ -103,7 +109,7 @@ public class SkillTreeNode : MonoBehaviour
             return;
         }
 
-        else 
+        else
         {
             // Apply the effects of the node to the player stats
             for (int i = 0; i < effects.Length; i++)
@@ -111,6 +117,13 @@ public class SkillTreeNode : MonoBehaviour
                 PlayerStats.Instance.IncreaseStatMult(effects[i], values[i]); // Call the method to increase the player stats
             }
         }
+    }
 
+    void UpdateNodeLinks()
+    {
+        for (int i = 0; i < links.Count; i++)
+        {
+            if (links[i].value == 0.0f) links[i].value = 1.0f; // Set the value of the slider to 1.0f if the node is unlocked
+        }
     }
 }
