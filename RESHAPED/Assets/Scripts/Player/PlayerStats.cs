@@ -81,10 +81,10 @@ public class PlayerStats : MonoBehaviour
 
         GetNotable(); // Call the method to check for notable effects
 
-        if (Input.GetKeyDown(KeyCode.E)) // Check if the E key is pressed
-        {
-            QuickLevelUp(); // Call the method to quickly level up the player
-        }
+        // if (Input.GetKeyDown(KeyCode.E)) // Check if the E key is pressed
+        // {
+        //     QuickLevelUp(); // Call the method to quickly level up the player
+        // }
     }
 
     public void IncreaseStatMult(string stat, float amount, NotableNode notable = null)

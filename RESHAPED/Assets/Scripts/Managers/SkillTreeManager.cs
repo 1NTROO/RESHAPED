@@ -68,7 +68,7 @@ public class SkillTreeManager : MonoBehaviour
 
     public void AddSkillPoint()
     {
-        skillPoints++;  
+        skillPoints++;
         SkillPointTextUpdate(); // Update the skill point text UI element
     }
 
