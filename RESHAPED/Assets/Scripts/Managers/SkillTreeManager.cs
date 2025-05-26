@@ -14,7 +14,6 @@ public class SkillTreeManager : MonoBehaviour
         else
         {
             instance = this; // Set the current instance as the singleton instance
-            DontDestroyOnLoad(gameObject); // Prevent this object from being destroyed on scene load
         }
     }
     

@@ -155,7 +155,7 @@ MonoBehaviour:
   attackRate: 3000
   bulletPrefab: {fileID: 193298847629028900, guid: bff22609138b03143a3101ce7d22d70a, type: 3}
   firePoint: {fileID: 0}
-  bulletSpeed: 0.3
+  bulletSpeed: 0.001
 --- !u!1 &3626244394040329403
 GameObject:
   m_ObjectHideFlags: 0

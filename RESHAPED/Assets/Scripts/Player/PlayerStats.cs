@@ -81,10 +81,10 @@ public class PlayerStats : MonoBehaviour
 
         GetNotable(); // Call the method to check for notable effects
 
-        // if (Input.GetKeyDown(KeyCode.E)) // Check if the E key is pressed
-        // {
-        //     QuickLevelUp(); // Call the method to quickly level up the player
-        // }
+        if (Input.GetKeyDown(KeyCode.E)) // Check if the E key is pressed
+        {
+            QuickLevelUp(); // Call the method to quickly level up the player
+        }
     }
 
     public void IncreaseStatMult(string stat, float amount, NotableNode notable = null)
@@ -135,6 +135,8 @@ public class PlayerStats : MonoBehaviour
 
     public void LevelUp()
     {
+        health += (healthTotal - health) / 2; // Reset the player's health to the maximum health
+        HealthOpacity(); // Update the opacity of the player based on its health
         totalXP += xpToLevelUp; // Increase the total experience points by the required experience points for leveling up
         level++; // Increase the player's level by 1
         currentXP -= xpToLevelUp; // Deduct the required experience points for leveling up from the current experience points
@@ -178,6 +180,12 @@ public class PlayerStats : MonoBehaviour
         if (health <= 0f) // Check if the player's health is less than or equal to zero
         {
             OnDeath(); // Call the method to handle player death
+        }
+
+        if (MissionManager.Instance.isMissionActive
+            && MissionManager.Instance.activeMissionType == MissionManager.MissionType.Survive)
+        {
+            MissionManager.Instance.OnMissionFailed(); // Check if the current mission is active and of type Survive, then call the OnMissionFailed method
         }
     }
 

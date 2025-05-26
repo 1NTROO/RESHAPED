@@ -47,6 +47,8 @@ public class SkillTreeNode : MonoBehaviour
         nodeName = gameObject.name; // Set the node name to the name of the GameObject
         // canBeUnlocked = false;
         isUnlocked = false; // Initialize the node as locked
+        links.Clear();
+        GetNodeLinks(); // Get the links of the node
 
         sprite = GetComponentInChildren<Image>(); // Get the SpriteRenderer component attached to the node
         spriteColor = new Color(85, 255, 0, 255); // Get the color of the sprite renderer

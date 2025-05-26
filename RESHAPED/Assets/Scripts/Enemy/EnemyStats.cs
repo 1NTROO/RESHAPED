@@ -27,6 +27,8 @@ public class EnemyStats : MonoBehaviour
 
     [Header("Enemy Misc")]
     [SerializeField] private SpriteRenderer spriteRenderer; // Reference to the SpriteRenderer component
+    private static int tries = 0;
+    private bool hitTheRng = false;
 
     void Start()
     {
@@ -72,6 +74,32 @@ public class EnemyStats : MonoBehaviour
         PlayerStats.Instance.currentXP += xpTotal; // Award experience points to the player
         PlayerStats.Instance.CheckLevelUp(); // Check if the player can level up
         PlayerStats.Instance.OnKill(); // Call the OnKill method in PlayerStats
+
+        if (MissionManager.Instance.isMissionActive
+            && MissionManager.Instance.activeMissionType == MissionManager.MissionType.Defeat)
+        // Check if the current mission is active and of type Defeat
+        {
+            MissionManager.Instance.ProgressMission(1); // Increment the mission progress
+        }
+
+        else if (MissionManager.Instance.isMissionActive
+            && MissionManager.Instance.activeMissionType == MissionManager.MissionType.Collect)
+        // Check if the current mission is active and of type Collect
+        {
+            for (int i = 0; i < tries; i++)
+            {
+                if (UnityEngine.Random.Range(0, 100) < 40) // 40% chance to hit the RNG
+                {
+                    hitTheRng = true; // Set the flag to true if RNG is hit
+                    MissionManager.Instance.SpawnCollectMission(transform.position); // Spawn a collect mission
+                    break;
+                }
+            }
+            if (!hitTheRng) // If RNG was not hit after all tries
+            {
+                tries++;
+            }
+        }
 
         Destroy(gameObject); // Destroy the enemy game object
     }
