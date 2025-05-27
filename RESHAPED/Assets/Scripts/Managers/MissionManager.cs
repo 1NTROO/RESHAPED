@@ -39,7 +39,7 @@ public class MissionManager : MonoBehaviour
         None,
         Collect,
         Defeat,
-        Survive,
+        Hitless,
         // Capture
     }
 
@@ -86,6 +86,7 @@ public class MissionManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             StartMission((MissionType)Random.Range(1, System.Enum.GetValues(typeof(MissionType)).Length), Random.Range(minMissionDuration, maxMissionDuration));
+            missionText.text = $"Mission: {activeMissionType}";
         }
     }
 
@@ -94,7 +95,7 @@ public class MissionManager : MonoBehaviour
         if (isMissionActive)
         {
             missionProgress += value;
-            missionText.text = $"Mission Progress: {missionProgress}/{maxMissionProgress}";
+            missionText.text = $"Mission: {activeMissionType} \n Mission Progress: {missionProgress}/{maxMissionProgress}";
             if (missionProgress >= maxMissionProgress)
             {
                 OnMissionSuccess();
@@ -120,8 +121,8 @@ public class MissionManager : MonoBehaviour
                 case MissionType.Collect:
                     maxMissionProgress = 7f; // Example value for defeat missions
                     break;
-                case MissionType.Survive:
-                    maxMissionProgress = 1f; // Example value for survive missions
+                case MissionType.Hitless:
+                    maxMissionProgress = 1f; // Example value for Hitless missions
                     break;
                 // case MissionType.Capture:
                 //     maxMissionProgress = 1f; // Example value for capture missions
@@ -166,7 +167,7 @@ public class MissionManager : MonoBehaviour
     {
         if (isMissionActive)
         {
-            if (activeMissionType == MissionType.Survive && currentMissionTime >= missionDuration)
+            if (activeMissionType == MissionType.Hitless && currentMissionTime >= missionDuration)
             {
                 OnMissionSuccess();
             }
@@ -197,7 +198,6 @@ public class MissionManager : MonoBehaviour
         {
             GameObject collectMission = Instantiate(collectMissionPrefab, position, Quaternion.identity);
             collectMission.transform.SetParent(transform); // Set the parent to MissionManager
-            Debug.Log("Collect mission spawned at: " + position);
         }
         else
         {

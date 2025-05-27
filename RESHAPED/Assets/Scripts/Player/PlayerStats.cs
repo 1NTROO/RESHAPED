@@ -183,7 +183,7 @@ public class PlayerStats : MonoBehaviour
         }
 
         if (MissionManager.Instance.isMissionActive
-            && MissionManager.Instance.activeMissionType == MissionManager.MissionType.Survive)
+            && MissionManager.Instance.activeMissionType == MissionManager.MissionType.Hitless)
         {
             MissionManager.Instance.OnMissionFailed(); // Check if the current mission is active and of type Survive, then call the OnMissionFailed method
         }

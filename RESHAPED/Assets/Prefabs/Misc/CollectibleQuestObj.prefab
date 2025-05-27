@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6604351128650007175}
   - component: {fileID: 5684980915329394324}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: -563230031424299367}
   - component: {fileID: 6069283633630544870}
   - component: {fileID: 7951327873796699522}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: CollectibleQuestObj
   m_TagString: Untagged
   m_Icon: {fileID: 0}

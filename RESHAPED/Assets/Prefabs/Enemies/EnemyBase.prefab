@@ -116,7 +116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2.5
   target: {fileID: 0}
-  detectionRange: 20
+  detectionRange: 40
   readyToAttack: 0
 --- !u!114 &8116016352542510624
 MonoBehaviour:

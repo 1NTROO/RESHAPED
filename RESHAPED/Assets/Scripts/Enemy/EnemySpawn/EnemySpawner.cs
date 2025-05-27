@@ -49,7 +49,8 @@ public class EnemySpawner : MonoBehaviour
     private void SpawnEnemyOffscreen()
     {
         // instantiate new GO from prefab on position off screen
-        int randomIndex = Random.Range(0, enemyPrefabs.Count);
+        int[] weights = new int[] { 5, 3 }; // example weights for two enemy types
+        int randomIndex = GetRandomWeightedIndex(weights);
         GameObject enemyPrefab = enemyPrefabs[randomIndex];
         GameObject enemy = Instantiate(enemyPrefab, GetRandomPositionOffScreen(), Quaternion.identity, transform);
         enemy.GetComponent<EnemyStats>().OnSpawn();
@@ -99,4 +100,33 @@ public class EnemySpawner : MonoBehaviour
         spawnPosition.z = 0;
         return spawnPosition;
     }
+
+    public int GetRandomWeightedIndex(int[] weights)
+    {
+        // Get the total sum of all the weights.
+        int weightSum = 0;
+        for (int i = 0; i < weights.Length; ++i)
+        {
+            weightSum += weights[i];
+        }
+
+        // Step through all the possibilities, one by one, checking to see if each one is selected.
+        int index = 0;
+        int lastIndex = weights.Length - 1;
+        while (index < lastIndex)
+        {
+            // Do a probability check with a likelihood of weights[index] / weightSum.
+            if (Random.Range(0, weightSum) < weights[index])
+            {
+                return index;
+            }
+
+            // Remove the last item from the sum of total untested weights and try again.
+            weightSum -= weights[index++];
+        }
+
+        // No other item was selected, so return very last index.
+        return index;
+    }
+
 }

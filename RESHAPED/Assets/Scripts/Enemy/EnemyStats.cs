@@ -88,7 +88,7 @@ public class EnemyStats : MonoBehaviour
         {
             for (int i = 0; i < tries; i++)
             {
-                if (UnityEngine.Random.Range(0, 100) < 40) // 40% chance to hit the RNG
+                if (UnityEngine.Random.Range(0, 100) < 70) // 70% chance to hit the RNG
                 {
                     hitTheRng = true; // Set the flag to true if RNG is hit
                     MissionManager.Instance.SpawnCollectMission(transform.position); // Spawn a collect mission
