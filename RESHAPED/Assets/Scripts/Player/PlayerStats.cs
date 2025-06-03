@@ -142,6 +142,10 @@ public class PlayerStats : MonoBehaviour
         currentXP -= xpToLevelUp; // Deduct the required experience points for leveling up from the current experience points
         xpToLevelUp += 66; // Increase the required experience points for the next level up
         SkillTreeManager.Instance.AddSkillPoint(); // Add a skill point to the player
+        if (level % 3 == 0) // Check if the player's level is a multiple of 3
+        {
+            SkillTreeManager.Instance.AddWeaponSkillPoint(); // Add a weapon skill point to the player
+        }
 
         levelText.GetComponent<TMPro.TextMeshProUGUI>().text = "Level: " + level; // Update the level text UI element with the new level
     }
