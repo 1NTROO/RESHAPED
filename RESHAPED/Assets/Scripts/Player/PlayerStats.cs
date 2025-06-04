@@ -60,6 +60,8 @@ public class PlayerStats : MonoBehaviour
 
     [Header("Player Misc")]
     [SerializeField] private SpriteRenderer spriteRenderer; // Reference to the SpriteRenderer component
+    [SerializeField] private AudioClip[] hitSounds; // Array of sounds to play when the player is hit
+    [SerializeField] private AudioClip levelUpSound; // Sound to play when the player levels up
 
     [Header("Player Private Stats")]
     [Inspectable] public float health; // Current health of the player
@@ -135,6 +137,7 @@ public class PlayerStats : MonoBehaviour
 
     public void LevelUp()
     {
+        AudioManager.Instance.PlayClip(levelUpSound); // Play the level up sound
         health += (healthTotal - health) / 2; // Reset the player's health to the maximum health
         HealthOpacity(); // Update the opacity of the player based on its health
         totalXP += xpToLevelUp; // Increase the total experience points by the required experience points for leveling up
@@ -179,6 +182,7 @@ public class PlayerStats : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        AudioManager.Instance.PlayRandomClip(hitSounds); // Play a random hit sound from the array
         health -= damage; // Decrease the player's health by the damage amount
         HealthOpacity(); // Update the opacity of the player based on its health
         if (health <= 0f) // Check if the player's health is less than or equal to zero

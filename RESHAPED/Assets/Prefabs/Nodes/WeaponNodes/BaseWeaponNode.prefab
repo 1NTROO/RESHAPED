@@ -353,5 +353,5 @@ MonoBehaviour:
   secondaryEffect: 
   secondaryEffectValue: 0
   connectedNodes: []
-  notableNode: {fileID: 0}
   links: []
+  unlockSkillSound: {fileID: 8300000, guid: 710b1242372db9b479f20b7cb955d09f, type: 3}

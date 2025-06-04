@@ -43,6 +43,9 @@ public class SkillTreeManager : MonoBehaviour
     [SerializeField] private GameObject weaponSkillTreeNodes; // Reference to the weapon skill tree nodes
     [SerializeField] private TMPro.TextMeshProUGUI weaponSkillPointText; // Reference to the weapon skill point text UI element
 
+    [Header("Skill Tree Sounds")]
+    [SerializeField] private AudioClip skillTreeOpenSound; // Sound to play when the skill tree is opened
+
     void Start()
     {
 
@@ -55,7 +58,7 @@ public class SkillTreeManager : MonoBehaviour
 
     public void GoToSkillTree()
     {
-
+        AudioManager.Instance.PlayClip(skillTreeOpenSound); // Play the skill tree open sound
         if (skillTreeCanvas.activeSelf) // Check if the skill tree canvas is already active
         {
             ExitSkillTree(); // If it is, exit the skill tree
@@ -71,6 +74,7 @@ public class SkillTreeManager : MonoBehaviour
 
     public void GoToWeaponSkillTree()
     {
+        AudioManager.Instance.PlayClip(skillTreeOpenSound); // Play the skill tree open sound
         if (weaponSkillTreeCanvas.activeSelf) // Check if the weapon skill tree canvas is already active
         {
             ExitWeaponSkillTree(); // If it is, exit the skill tree

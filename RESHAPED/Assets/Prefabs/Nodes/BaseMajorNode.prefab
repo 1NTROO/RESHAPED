@@ -144,6 +144,7 @@ MonoBehaviour:
   connectedNodes: []
   notableNode: {fileID: 0}
   links: []
+  unlockSkillSound: {fileID: 8300000, guid: 710b1242372db9b479f20b7cb955d09f, type: 3}
 --- !u!1 &5736713732271721609
 GameObject:
   m_ObjectHideFlags: 0

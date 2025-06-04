@@ -37,6 +37,9 @@ public class SkillTreeNode : MonoBehaviour
     [SerializeField] private NotableNode notableNode; // Reference to the notable node
     [SerializeField] private List<Slider> links; // List of sliders for the node
 
+    [Header("Node SFX")]
+    [SerializeField] private AudioClip unlockSkillSound; // Sound to play when a skill is unlocked
+
     private Image sprite; // Reference to the Image component
     private Color spriteColor; // Color of the sprite
 
@@ -86,6 +89,7 @@ public class SkillTreeNode : MonoBehaviour
     {
         if (canBeUnlocked && SkillTreeManager.Instance.SkillPoints > 0) // Check if the node can be unlocked
         {
+            AudioManager.Instance.PlayClip(unlockSkillSound); // Play the unlock skill sound
             isUnlocked = true; // Unlock the node
             SkillTreeManager.Instance.SkillPoints--; // Decrease skill points
             print("Node Unlocked: " + nodeName); // Debug message to indicate the node is unlocked

@@ -43,6 +43,10 @@ public class WeaponNode : MonoBehaviour
     [SerializeField] private WeaponNode[] connectedNodes; // Array of connected nodes
     [SerializeField] private List<Slider> links; // List of sliders for the node
 
+    [Header("Node SFX")]
+    [SerializeField] private AudioClip unlockSkillSound; // Sound to play when a skill is unlocked
+
+
     private Image sprite; // Reference to the Image component
     private Color spriteColor; // Color of the sprite
     void Start()
@@ -87,6 +91,7 @@ public class WeaponNode : MonoBehaviour
     {
         if (canBeUnlocked && SkillTreeManager.Instance.WeaponSkillPoints > 0) // Check if the node can be unlocked
         {
+            AudioManager.Instance.PlayClip(unlockSkillSound); // Play the unlock skill sound
             isUnlocked = true; // Unlock the node
             SkillTreeManager.Instance.WeaponSkillPoints--; // Decrease skill points
             print("Node Unlocked: " + nodeName); // Debug message to indicate the node is unlocked

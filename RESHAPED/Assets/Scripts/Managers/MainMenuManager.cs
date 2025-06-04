@@ -5,6 +5,8 @@ public class MainMenuManager : MonoBehaviour
     private static MainMenuManager instance; // Singleton instance of MainMenuManager
     public static MainMenuManager Instance { get { return instance; } } // Public property to access the instance
 
+    [SerializeField] private AudioClip buttonClickSound; // Sound to play on button click
+
     private void Awake()
     {
         if (instance != null && instance != this) // Check if an instance already exists
@@ -30,6 +32,8 @@ public class MainMenuManager : MonoBehaviour
     {
         // Load the specified scene
         UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
+
+        AudioManager.Instance.PlayClip(buttonClickSound); // Play button click sound
     }
     
     public void QuitGame()

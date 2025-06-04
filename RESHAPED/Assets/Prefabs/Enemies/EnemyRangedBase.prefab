@@ -140,6 +140,15 @@ MonoBehaviour:
   xpMult: 1
   xpTotal: 0
   spriteRenderer: {fileID: 5229368598535509501}
+  hitSounds:
+  - {fileID: 8300000, guid: b25fbf28eef83124096fa92f2d1193c8, type: 3}
+  - {fileID: 8300000, guid: 0aef55f88b984a0428534e7e31ced3b4, type: 3}
+  - {fileID: 8300000, guid: 98c36e53358b6b146ac7e549783c7290, type: 3}
+  - {fileID: 8300000, guid: 95bfd376600f0654bb0c8421e835ccf7, type: 3}
+  - {fileID: 8300000, guid: 1bb361c814a9b214892ad3e0c7530ea1, type: 3}
+  - {fileID: 8300000, guid: 78d78b9799a4d1c46b7fba1f50d229f5, type: 3}
+  - {fileID: 8300000, guid: 42d10701fe665af4c9e0f3d88237462a, type: 3}
+  deathSound: {fileID: 8300000, guid: 06af691a3e2d1224aabb55f809f3ad48, type: 3}
 --- !u!114 &8374447580055684367
 MonoBehaviour:
   m_ObjectHideFlags: 0

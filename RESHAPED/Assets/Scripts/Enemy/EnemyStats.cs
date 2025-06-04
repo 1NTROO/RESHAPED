@@ -29,6 +29,8 @@ public class EnemyStats : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer; // Reference to the SpriteRenderer component
     private static int tries = 0;
     private bool hitTheRng = false;
+    [SerializeField] private AudioClip[] hitSounds; // Array of sounds to play when the enemy is hit
+    [SerializeField] private AudioClip deathSound; // Sound to play when the enemy dies
 
     void Start()
     {
@@ -57,6 +59,7 @@ public class EnemyStats : MonoBehaviour
     public void TakeDamage(float damage)
     {
         healthTotal -= damage; // Decrease the enemy's health by the damage amount
+        AudioManager.Instance.PlayRandomClip(hitSounds); // Play a random hit sound from the array
         HealthOpacity(); // Update the opacity of the enemy based on its health
         if (healthTotal <= 0f) // Check if the enemy's health is less than or equal to zero
         {

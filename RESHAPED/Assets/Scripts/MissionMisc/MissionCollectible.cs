@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class MissionCollectible : MonoBehaviour
 {
+    [SerializeField] AudioClip collectSound;
     void Start()
     {
 
@@ -16,6 +17,8 @@ public class MissionCollectible : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            // Play the collection sound
+            AudioManager.Instance.PlayClip(collectSound);
             // Check if the player is on a mission
             if (MissionManager.Instance.isMissionActive && MissionManager.Instance.activeMissionType == MissionManager.MissionType.Collect)
             {
