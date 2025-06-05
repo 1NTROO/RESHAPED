@@ -82,12 +82,6 @@ public class MissionManager : MonoBehaviour
                 OnMissionFailed();
             }
         }
-
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            StartMission((MissionType)Random.Range(1, System.Enum.GetValues(typeof(MissionType)).Length), Random.Range(minMissionDuration, maxMissionDuration));
-            missionText.text = $"Mission: {activeMissionType}";
-        }
     }
 
     public void ProgressMission(float value)

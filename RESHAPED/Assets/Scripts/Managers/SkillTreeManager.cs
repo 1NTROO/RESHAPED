@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.TextCore;
 
 public class SkillTreeManager : MonoBehaviour
 {
@@ -42,6 +43,8 @@ public class SkillTreeManager : MonoBehaviour
     [SerializeField] private GameObject weaponSkillTreeCanvas; // Reference to the weapon skill tree canvas
     [SerializeField] private GameObject weaponSkillTreeNodes; // Reference to the weapon skill tree nodes
     [SerializeField] private TMPro.TextMeshProUGUI weaponSkillPointText; // Reference to the weapon skill point text UI element
+    [Header("Pause Menu Settings")]
+    [SerializeField] private GameObject pauseMenuCanvas; // Reference to the pause menu canvas
 
     [Header("Skill Tree Sounds")]
     [SerializeField] private AudioClip skillTreeOpenSound; // Sound to play when the skill tree is opened
@@ -53,7 +56,10 @@ public class SkillTreeManager : MonoBehaviour
 
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            PauseGame(); // Pause the game when the Escape key is pressed
+        }
     }
 
     public void GoToSkillTree()
@@ -120,9 +126,23 @@ public class SkillTreeManager : MonoBehaviour
     {
         skillPointText.text = "Skill Points: " + skillPoints; // Update the skill point text UI element
     }
-    
+
     public void WeaponSkillPointTextUpdate()
     {
         weaponSkillPointText.text = "Weapon Skill Points: " + weaponSkillPoints; // Update the weapon skill point text UI element
+    }
+
+    public void PauseGame()
+    {
+        if (pauseMenuCanvas.activeSelf) // Check if the pause menu canvas is already active
+        {
+            pauseMenuCanvas.SetActive(false); // If it is, hide the pause menu canvas
+            Time.timeScale = 1; // Resume the game
+        }
+        else
+        {
+            Time.timeScale = 0; // Pause the game
+            pauseMenuCanvas.SetActive(true); // Show the pause menu canvas
+        }
     }
 }

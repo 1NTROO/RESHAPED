@@ -78,6 +78,7 @@
     <Compile Include="Assets\Scripts\Shooting\Shoot.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyBulletHandler.cs" />
+    <Compile Include="Assets\Scripts\Managers\PauseManager.cs" />
     <Compile Include="Assets\Scripts\Managers\KeepInfoOnLoad.cs" />
     <Compile Include="Assets\Scripts\Managers\MissionManager.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyMovement.cs" />
