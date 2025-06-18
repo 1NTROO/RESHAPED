@@ -14581,11 +14581,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -5513351620040387846, guid: 343011c21ce04694cbaa07cc0b348b23, type: 3}
       propertyPath: secondaryEffect
-      value: damage
+      value: damageModifier
       objectReference: {fileID: 0}
     - target: {fileID: -5513351620040387846, guid: 343011c21ce04694cbaa07cc0b348b23, type: 3}
       propertyPath: secondaryEffectValue
-      value: -40
+      value: -0.6
       objectReference: {fileID: 0}
     - target: {fileID: -5513351620040387846, guid: 343011c21ce04694cbaa07cc0b348b23, type: 3}
       propertyPath: connectedNodes.Array.size
@@ -14607,7 +14607,7 @@ PrefabInstance:
       propertyPath: m_text
       value: '+2 burst
 
-        -40% damage'
+        -60% damage'
       objectReference: {fileID: 0}
     - target: {fileID: 2795111719177886273, guid: 343011c21ce04694cbaa07cc0b348b23, type: 3}
       propertyPath: m_Pivot.x
@@ -17768,9 +17768,11 @@ MonoBehaviour:
   skillTreeCanvas: {fileID: 1001527194}
   skillTreeNodes: {fileID: 1008891200}
   skillPointText: {fileID: 822375814}
+  skillTreeButton: {fileID: 1786062834}
   weaponSkillTreeCanvas: {fileID: 597214874}
   weaponSkillTreeNodes: {fileID: 1671580640}
   weaponSkillPointText: {fileID: 110166453}
+  weaponSkillTreeButton: {fileID: 1856591572}
   pauseMenuCanvas: {fileID: 1198813059}
   skillTreeOpenSound: {fileID: 8300000, guid: 364bd950fa1163d4984afc46b25202d5, type: 3}
 --- !u!1 &1227050280

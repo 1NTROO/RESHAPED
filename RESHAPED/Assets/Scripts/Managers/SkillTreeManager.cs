@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.TextCore;
+using UnityEngine.UI;
 
 public class SkillTreeManager : MonoBehaviour
 {
@@ -38,11 +39,13 @@ public class SkillTreeManager : MonoBehaviour
     [SerializeField] private GameObject skillTreeNodes; // Reference to the skill tree nodes
 
     [SerializeField] private TMPro.TextMeshProUGUI skillPointText; // Reference to the skill point text UI element
+    [SerializeField] private Button skillTreeButton; // Reference to the skill tree button UI element
 
     [Header("Weapon Skill Tree Settings")]
     [SerializeField] private GameObject weaponSkillTreeCanvas; // Reference to the weapon skill tree canvas
     [SerializeField] private GameObject weaponSkillTreeNodes; // Reference to the weapon skill tree nodes
     [SerializeField] private TMPro.TextMeshProUGUI weaponSkillPointText; // Reference to the weapon skill point text UI element
+    [SerializeField] private Button weaponSkillTreeButton; // Reference to the weapon skill tree button UI element
     [Header("Pause Menu Settings")]
     [SerializeField] private GameObject pauseMenuCanvas; // Reference to the pause menu canvas
 
@@ -125,11 +128,13 @@ public class SkillTreeManager : MonoBehaviour
     public void SkillPointTextUpdate()
     {
         skillPointText.text = "Skill Points: " + skillPoints; // Update the skill point text UI element
+        skillTreeButton.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "Skill Tree (" + skillPoints + ")"; // Update the skill tree button text
     }
 
     public void WeaponSkillPointTextUpdate()
     {
         weaponSkillPointText.text = "Weapon Skill Points: " + weaponSkillPoints; // Update the weapon skill point text UI element
+        weaponSkillTreeButton.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "Weapon Skills (" + weaponSkillPoints + ")"; // Update the weapon skill tree button text
     }
 
     public void PauseGame()

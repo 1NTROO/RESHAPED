@@ -58,7 +58,13 @@ public class EnemySpawner : MonoBehaviour
 
     private void ResetTimer()
     {
-        spawnTimer = Random.Range(minSpawnTime, maxSpawnTime);
+        float tempMinSpawnTime = minSpawnTime - PlayerStats.Instance.level * 0.2f;
+        float tempMaxSpawnTime = maxSpawnTime - PlayerStats.Instance.level * 0.3f;
+        if (tempMinSpawnTime < 1f)
+            tempMinSpawnTime = 1f;
+        if (tempMaxSpawnTime < 1f)
+            tempMaxSpawnTime = 1f;
+        spawnTimer = Random.Range(tempMinSpawnTime, tempMaxSpawnTime);
     }
 
     private Vector3 GetRandomPositionOffScreen()

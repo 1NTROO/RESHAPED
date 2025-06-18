@@ -82,6 +82,11 @@ public class PlayerStats : MonoBehaviour
         xpSlider.GetComponent<Slider>().value = currentXP / xpToLevelUp; // Update the XP slider value based on current XP and required XP to level up
 
         GetNotable(); // Call the method to check for notable effects
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            QuickLevelUp(); // Call the method to quickly level up the player when F key is pressed
+        }
     }
 
     public void IncreaseStatMult(string stat, float amount, NotableNode notable = null)
